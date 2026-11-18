@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="es-CO">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Plataforma del curso</title>
+  <meta name="description" content="Plataforma del curso Inteligencia Artificial Generativa como catalizador de la productividad: material, videos, apps de ejemplo, juegos y comunidad.">
+  <meta name="theme-color" content="#6C3CE1">
+  <meta property="og:title" content="IA Productiva · Curso de IA Generativa">
+  <meta property="og:description" content="Aprende a usar la IA generativa para trabajar mejor: material, videos, apps de ejemplo, juegos y comunidad.">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+  <script>
+    /* Aplica el tema guardado antes de pintar, para evitar parpadeo */
+    try { var t = localStorage.getItem("iap_theme") || (matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light"); document.documentElement.setAttribute("data-theme", t); } catch (e) {}
+  </script>
+</head>
+<body>
+  <div id="app">
+    <div class="loader"><div><div class="spinner" style="margin:0 auto 1rem"></div><p class="muted">Cargando la plataforma…</p></div></div>
+  </div>
+  <div class="toasts" id="toasts" aria-live="polite"></div>
+  <noscript><p style="padding:2rem;text-align:center">Para usar la plataforma, activa JavaScript en tu navegador.</p></noscript>
+
+  <script>try { if (/[?&]preview=aprendiz/.test(location.search)) sessionStorage.setItem("iap_preview", "1"); } catch (e) {}</script>
+  <script src="js/config.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/backend.js"></script>
+  <script src="js/ui.js"></script>
+  <script src="js/activities.js"></script>
+<script src="js/admin.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
