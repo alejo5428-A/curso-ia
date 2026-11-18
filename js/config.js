@@ -10,19 +10,16 @@ window.APP_CONFIG = {
   /* Correos que entran como INSTRUCTOR / ADMINISTRADOR.
      Escríbelos también en firestore.rules (línea marcada). */
   instructores: [
-    "TU_CORREO_DE_INSTRUCTOR@gmail.com"
+    "alejo5428@gmail.com"
   ],
 
-  /* Firebase (registro real, chat y contenido compartido).
-     Mientras esté sin configurar, la plataforma trabaja en MODO DEMO:
-     todo se guarda solo en el navegador de cada persona.
-     Pasos en README.md. */
+  /* Firebase (registro real, chat y contenido compartido). */
   firebase: {
-    apiKey: "TU_API_KEY",
-    authDomain: "TU_PROYECTO.firebaseapp.com",
-    projectId: "TU_PROYECTO",
-    storageBucket: "TU_PROYECTO.appspot.com",
-    messagingSenderId: "",
-    appId: ""
+    apiKey: "AIzaSyBuwq6G3upSW0bHvc3e5IyPJLxEjVZqvtQ",
+    authDomain: "curso-ia-productiva-759a3.firebaseapp.com",
+    projectId: "curso-ia-productiva-759a3",
+    storageBucket: "curso-ia-productiva-759a3.firebasestorage.app",
+    messagingSenderId: "530944868944",
+    appId: "1:530944868944:web:ddf29a0c84ff3a99b70755"
   }
 };
