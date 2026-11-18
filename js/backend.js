@@ -176,7 +176,7 @@
         A = authM; F = fsM; FBAPP = appM; const app = appM.initializeApp(CFG.firebase); auth = A.getAuth(app); db = F.getFirestore(app);
         await new Promise((resolve) => {
           let first = true;
-          F.onSnapshot(F.doc(db, "config", "course"), (s) => { course = s.exists() ? s.data() : defaults(); emitCourse(); if (first) { first = false; resolve(); } }, (e) => { console.warn("config/course", e); course = course || defaults(); if (first) { first = false; resolve(); } });
+          F.onSnapshot(F.doc(db, "config", "course"), (s) => { course = s.exists() ? (typeof s.data()._json === "string" ? JSON.parse(s.data()._json) : s.data()) : defaults(); emitCourse(); if (first) { first = false; resolve(); } }, (e) => { console.warn("config/course", e); course = course || defaults(); if (first) { first = false; resolve(); } });
         });
         await new Promise((resolve) => {
           let first = true;
@@ -259,7 +259,7 @@
       }),
       myResults: wrap(async () => { const out = {}; (await F.getDocs(F.query(F.collection(db, "results"), F.where("uid", "==", current.uid)))).docs.forEach((d) => { out[d.data().actId] = d.data(); }); return out; }),
       listResults: wrap(async () => (await F.getDocs(F.collection(db, "results"))).docs.map((d) => d.data())),
-      saveCourse: wrap(async (c) => { await F.setDoc(F.doc(db, "config", "course"), clone(c)); course = clone(c); emitCourse(); }),
+      saveCourse: wrap(async (c) => { await F.setDoc(F.doc(db, "config", "course"), { info: clone(c.info || {}), _json: JSON.stringify(c) }); course = clone(c); emitCourse(); }),
       subscribeChat(cb) { const q = F.query(F.collection(db, "chat"), F.orderBy("ts", "desc"), F.limit(200)); return F.onSnapshot(q, (s) => cb(s.docs.map((d) => ({ ...d.data(), id: d.id, ts: ms(d.data().ts) })).reverse()), (e) => { console.error(e); cb([]); }); },
       sendChat: wrap((text) => F.addDoc(F.collection(db, "chat"), { uid: current.uid, name: current.name, ficha: current.ficha || "", role: current.role, color: current.color, text: cleanText(text), ts: F.serverTimestamp() })),
       deleteChat: wrap((id) => F.deleteDoc(F.doc(db, "chat", id))),
